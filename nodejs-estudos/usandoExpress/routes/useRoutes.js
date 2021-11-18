@@ -1,10 +1,10 @@
 //fs lida com os arquivos de sistema
 //join lida com pastas de arquivos
 const fs = require("fs");
-const { join } = fs;
+const { join } = require("path");
 
 //criando um arquivo para armazenar os users do tipo json
-const filePath = join(_dirname, "users.json");
+const filePath = join(__dirname, "users.json");
 
 //obtendo valor dos usuários dentro do BD
 const getUsers = () => {
@@ -23,9 +23,12 @@ const getUsers = () => {
 
 //metodo para salvar usuarios
 const saveUser = (users) =>
+  //recebe o caminho, transforma em json recebendo o useres, nenhum parametro
+  //e tabulação
   fs.writeFileSync(filePath, JSON.stringify(users, null, "\t"));
 
 const useRoute = (app) => {
+  //tratando rotas das requisições
   app.route("/users/:id?").get((req, res) => {
     const users = getUsers();
     res.send({ users });
