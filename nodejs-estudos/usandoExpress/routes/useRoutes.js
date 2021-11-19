@@ -23,7 +23,7 @@ const getUsers = () => {
 
 //metodo para salvar usuarios
 const saveUser = (users) =>
-  //recebe o caminho, transforma em json recebendo o useres, nenhum parametro
+  //recebe o caminho, transforma em json recebendo o users, nenhum parametro
   //e tabulação
   fs.writeFileSync(filePath, JSON.stringify(users, null, "\t"));
 
